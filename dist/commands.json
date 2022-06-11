@@ -1,0 +1,54 @@
+{
+  "/help": {
+    "description": "Shows how to use each of the commands.",
+    "role": "Member"
+  },
+  "/suggest [title] [description]": {
+    "description": "Suggest an idea for the ScratchTools extension.",
+    "role": "Member"
+  },
+  "/bugreport [title] [description]": {
+    "description": "Report a bug in the ScratchTools extension.",
+    "role": "Member"
+  },
+  "/rank [user]": {
+    "description": "Shows any user's rank in the server.",
+    "role": "Member"
+  },
+  "/connect": {
+    "description": "Connects your Scratch account to your server profile.",
+    "role": "Member"
+  },
+  "/profile [user]": {
+    "description": "Finds data on a specified Scratcher.",
+    "role": "Member"
+  },
+  "/wiki [search]": {
+    "description": "Searches for something on Wikipedia.",
+    "role": "Member"
+  },
+  "/suggestion_answer [answer] [message id]": {
+    "description": "Answers a suggestion and whether or not it is approved.",
+    "role": "Developer"
+  },
+  "/bug_answer [answer] [message id]": {
+    "description": "Answers a bug report and whether or not it is valid.",
+    "role": "Developer"
+  },
+  "/warn [user] [reason]": {
+    "description": "Warn any user. This will let them know they were warned.",
+    "role": "Moderator"
+  },
+  "/slowmode [time]": {
+    "description": "Set the slowmode for whichever channel you're in.",
+    "role": "Moderator"
+  },
+  "!leaderboard": {
+    "description": "View the server's XP leaderboard.",
+    "role": "Member"
+  },
+  "!aboutme [about me]": {
+    "description": "Set your server about me that shows when someone uses /rank.",
+    "role": "Friends of Gobo"
+  }
+}
