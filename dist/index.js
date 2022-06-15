@@ -476,7 +476,17 @@ client.on('guildMemberAdd', async (member) => {
     .setTimestamp()
     .setColor('ORANGE')
   //await client.channels.cache.get('945340853189247019').send({ embeds:[welcome] })
+var gotit = new MessageActionRow()
+            .addComponents(
+              new MessageButton()
+                .setCustomId('gotit')
+                .setLabel("I Will Welcome Them")
+                .setStyle('PRIMARY')
+                .setDisabled(false)
+            );
 
+          var banana = await client.channels.fetch('973239218518245386')
+          await banana.send({ content: `<@&973238564034859109> - <@${member.user.id}> just joined!`, components: [gotit] })
 } catch(err) {
   console.log(err)
 }
@@ -1990,7 +2000,8 @@ client.on('messageCreate', async (message) => {
       try {
       if (message.channel.parentId === '954823644415135826') {
         if (message.author.id !== '948687053896433714') {
-          if (message.content.toLowerCase() === '!close') {
+          if (message.content.toLowerCase() === '!close' || message.content.toLowerCase() === '!correct') {
+            if (message.content.toLowerCase() === '!close') {
             var modmail = new MessageEmbed()
               .setColor('#0099ff')
               .setTitle('Modmail Closed')
@@ -2008,6 +2019,11 @@ client.on('messageCreate', async (message) => {
               await message.channel.setArchived(true)
             }
           } else {
+              var modder = await client.users.fetch(message.channel.name)
+              await modder.send(`'Good Job, Agent ${modder.username}! You’ve discovered the organization that’s making attacks on the beloved Scatt. Now, all we have to do is put a stop to it. Scatt has a lockdown code, and we believe that an encoded version of it was hidden in the project that you originally viewed. Go try and find it, and then decode it. Use /guess to submit your answer.'`)
+              await message.channel.send('Sent!')
+          }
+          } else {
             console.log(message.content)
             if (message.content !== '') {
               console.log(message.channel.name)
@@ -2017,7 +2033,7 @@ client.on('messageCreate', async (message) => {
               } else {
                 var modmailsend = await client.users.fetch(message.channel.name)
                 var modmailsent = await modmailsend.send('`' + message.author.tag + '` ' + message.content)
-                await message.react('📪')
+                await message.react('<:checked:980449729458634752>')
               }
             }
           }
@@ -2067,7 +2083,7 @@ client.on('messageCreate', async (message) => {
           } else {
             if (message.content !== '') {
               var repyto = message
-              await repyto.react('📪')
+              await repyto.react('<:checked:980449729458634752>')
               var theembedthread = await client.channels.cache.get("954823644415135826").threads.cache.find(x => x.name === message.author.id);
               await theembedthread.send("`" + message.author.tag + "` " + message.content)
             } else {
@@ -2201,6 +2217,24 @@ client.on('messageCreate', async (message) => {
         const args = message.content.slice(prefix.length).split(' ');
         const command = args.shift();
         switch (command) {
+
+          case 'approved':
+            var channel = client.channels.cache.get('948411171797606401')
+            var stuff = []
+            var messages = await channel.messages.fetch()
+messages.forEach(function(msg) {
+  if (msg.embeds.length === 1) {
+    if (msg.embeds[0].footer !== null) {
+      if (msg.embeds[0].footer.text === 'Approved!') {
+        var embed = msg.embeds[0]
+        embed.setURL(`https://discord.com/channels/945340853189247016/948411171797606401/${msg.id}`)
+stuff.push(embed)
+      }
+    }
+  }
+})
+            await message.reply({content:"All approved suggestions:", embeds:stuff})
+            break;
 
           
 
